@@ -4,9 +4,8 @@ import subprocess
 from ebook import EBook
 
 class EBookManager:
-    def __init__(self, ebook_folder, download_path):
+    def __init__(self, ebook_folder):
         self.ebook_folder = ebook_folder
-        self.download_path = download_path
         self.last_selected_file = os.path.join(self.ebook_folder, "last_selected.json")
         self.create_last_selected_file()
 
@@ -83,7 +82,7 @@ class EBookManager:
 
     def download_ebook(self):
         try:
-            subprocess.run(["libgen-downloader", "-d", self.download_path], check=True)
+            subprocess.run(["libgen-downloader"], check=True)
         except FileNotFoundError:
             print("libgen-downloader is not installed.")
             print("Please install it using the following command:")

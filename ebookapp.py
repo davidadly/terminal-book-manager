@@ -6,9 +6,7 @@ class EBookApp:
         self.script_path = os.path.dirname(os.path.abspath(__file__))
         self.config_file = os.path.join(self.script_path, "config.txt")
         self.ebook_path = os.path.join(self.script_path, "ebooks")
-        self.download_path = os.path.join(self.script_path, "books")
         os.makedirs(self.ebook_path, exist_ok=True)
-        os.makedirs(self.download_path, exist_ok=True)
         self.load_config()
 
     def load_config(self):
@@ -41,7 +39,7 @@ class EBookApp:
             print("Invalid path. Path does not exist.")
 
     def run(self):
-        self.manager = EBookManager(self.ebook_path, self.download_path)
+        self.manager = EBookManager(self.ebook_path)
         while True:
             try:
                 print("\nTerminal EBook Manager")
